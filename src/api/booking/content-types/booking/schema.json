@@ -1,0 +1,48 @@
+{
+  "kind": "collectionType",
+  "collectionName": "bookings",
+  "info": {
+    "singularName": "booking",
+    "pluralName": "bookings",
+    "displayName": "booking"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "skill_id": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::skill.skill",
+      "inversedBy": "bookings"
+    },
+    "booking_details": {
+      "type": "blocks"
+    },
+    "requested_date": {
+      "type": "datetime"
+    },
+    "booking_status": {
+      "type": "enumeration",
+      "enum": [
+        "pending",
+        "active",
+        "completed",
+        "failed"
+      ]
+    },
+    "reviews": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::review.review",
+      "mappedBy": "booking_id"
+    },
+    "user": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "plugin::users-permissions.user",
+      "inversedBy": "bookings"
+    }
+  }
+}

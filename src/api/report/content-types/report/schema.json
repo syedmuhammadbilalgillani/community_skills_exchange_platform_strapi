@@ -1,0 +1,44 @@
+{
+  "kind": "collectionType",
+  "collectionName": "reports",
+  "info": {
+    "singularName": "report",
+    "pluralName": "reports",
+    "displayName": "report"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "reported_skill_id": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::skill.skill"
+    },
+    "report_type": {
+      "type": "string"
+    },
+    "report_reason": {
+      "type": "text"
+    },
+    "report_description": {
+      "type": "text"
+    },
+    "report_status": {
+      "type": "enumeration",
+      "enum": [
+        "active",
+        "pending",
+        "rejected",
+        "succeed"
+      ]
+    },
+    "resolved_at": {
+      "type": "datetime"
+    },
+    "admin_notes": {
+      "type": "text"
+    }
+  }
+}

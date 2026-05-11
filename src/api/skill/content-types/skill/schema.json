@@ -1,0 +1,70 @@
+{
+  "kind": "collectionType",
+  "collectionName": "skills",
+  "info": {
+    "singularName": "skill",
+    "pluralName": "skills",
+    "displayName": "skills"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "description": {
+      "type": "richtext"
+    },
+    "duration": {
+      "type": "string"
+    },
+    "location": {
+      "type": "string"
+    },
+    "city": {
+      "type": "string"
+    },
+    "is_active": {
+      "type": "boolean",
+      "required": true,
+      "default": false
+    },
+    "bookings": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::booking.booking",
+      "mappedBy": "skill_id"
+    },
+    "skill_image": {
+      "type": "string"
+    },
+    "skill_level": {
+      "type": "enumeration",
+      "enum": [
+        "beginner",
+        "intermediate",
+        "expert"
+      ]
+    },
+    "category": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::category.category",
+      "inversedBy": "skills"
+    },
+    "reviews": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::review.review",
+      "mappedBy": "skill"
+    },
+    "user_skill": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "plugin::users-permissions.user",
+      "inversedBy": "skills"
+    }
+  }
+}
